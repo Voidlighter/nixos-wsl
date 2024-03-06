@@ -181,6 +181,17 @@ in {
       };
     };
 
+# FIXME: Didn't work
+#    ssh = {
+#      startAgent = true;
+#      extraConfig = ''
+#      Host github
+#	HostName github.com
+#	User git
+#	AddKeysToAgent yes
+#      '';
+#    };
+
     # This is where .zshrc stuff goes
     zsh = {
       enable = true;
