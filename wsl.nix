@@ -7,8 +7,7 @@
   inputs,
   ...
 }: {
-  # FIXME: change to your tz! look it up with "timedatectl list-timezones"
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Denver";
 
   networking.hostName = "${hostname}";
 
@@ -17,7 +16,6 @@
     "d /home/${username}/.config/lvim 0755 ${username} users"
   ];
 
-  # FIXME: change your shell here if you don't want zsh
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
   environment.shells = [pkgs.zsh];
@@ -31,7 +29,6 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    # FIXME: change your shell here if you don't want zsh
     shell = pkgs.zsh;
     extraGroups = [
       "wheel"
