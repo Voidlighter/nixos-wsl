@@ -25,7 +25,7 @@
   security.sudo.wheelNeedsPassword = false;
 
   # FIXME: uncomment the next line to enable SSH
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   users.users.${username} = {
     isNormalUser = true;
@@ -40,6 +40,9 @@
     # FIXME: add your own ssh public key
     # openssh.authorizedKeys.keys = [
     #   "ssh-rsa ..."
+    # ];
+    # openssh.authorizedKeys.keyFiles = [
+    # "/home/${username}/.ssh/id_ed25519"
     # ];
   };
 

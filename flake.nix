@@ -76,8 +76,8 @@
 
       nixosConfigurations.Veridia = mkNixosConfiguration {
         hostname = "Veridia";
-        username = "Cade"; 
-	      modules = [
+        username = "Cade";
+	modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
         ];

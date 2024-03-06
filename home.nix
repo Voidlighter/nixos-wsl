@@ -1,6 +1,6 @@
 {
   # FIXME: uncomment the next line if you want to reference your GitHub/GitLab access tokens and other secrets
-  # secrets,
+  secrets,
   config,
   pkgs,
   username,
@@ -8,7 +8,6 @@
   ...
 }: let
   unstable-packages = with pkgs.unstable; [
-    # FIXME: select your core binaries that you always want on the bleeding-edge
     bat
     bottom
     coreutils
@@ -37,7 +36,6 @@
   ];
 
   stable-packages = with pkgs; [
-    # FIXME: customize these stable packages to your liking for the languages that you use
 
     # key tools
     gh # for bootstrapping
@@ -97,8 +95,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    sessionVariables.EDITOR = "lvim";
-    # FIXME: set your preferred $SHELL
+    sessionVariables.EDITOR = "nvim";
     sessionVariables.SHELL = "/etc/profiles/per-user/${username}/bin/zsh";
   };
 
@@ -160,18 +157,17 @@ in {
         side-by-side = true;
         navigate = true;
       };
-      userEmail = ""; # FIXME: set your git email
-      userName = ""; #FIXME: set your git username
+      userEmail = "voidlighter@gmail.com";
+      userName = "voidlighter"; 
       extraConfig = {
-        # FIXME: uncomment the next lines if you want to be able to clone private https repos
-        # url = {
-        #   "https://oauth2:${secrets.github_token}@github.com" = {
-        #     insteadOf = "https://github.com";
-        #   };
-        #   "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
-        #     insteadOf = "https://gitlab.com";
-        #   };
-        # };
+        url = {
+          "https://oauth2:${secrets.github_token}@github.com" = {
+            insteadOf = "https://github.com";
+          };
+          "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
+            insteadOf = "https://gitlab.com";
+          };
+        };
         push = {
           default = "current";
           autoSetupRemote = true;
@@ -185,13 +181,13 @@ in {
       };
     };
 
-    # FIXME: This is my .zshrc - you can fiddle with it if you want
+    # This is where .zshrc stuff goes
     zsh = {
       enable = true;
       autocd = true;
       enableAutosuggestions = true;
       enableCompletion = true;
-      defaultKeymap = "emacs";
+      defaultKeymap = "viins";
       history.size = 10000;
       history.save = 10000;
       history.expireDuplicatesFirst = true;
@@ -224,7 +220,6 @@ in {
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         show_path = "echo $PATH | tr ':' '\n'";
 
-        # FIXME: add more git aliases here if you want them
         gapa = "git add --patch";
         grpa = "git reset --patch";
         gst = "git status";
