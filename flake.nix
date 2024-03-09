@@ -42,12 +42,12 @@
 
       configurationDefaults = args: {
         nixpkgs = nixpkgsWithOverlays;
-				home-manager = {
-	        useGlobalPkgs = true;
-	        useUserPackages = true;
-	        backupFileExtension = "hm-backup";
-	        extraSpecialArgs = args;
-				}
+      		home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "hm-backup";
+            extraSpecialArgs = args;
+      		};
       };
 
       argDefaults = {
