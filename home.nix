@@ -62,7 +62,7 @@
     
     # java stuff
     maven
-    temurin-bin
+    temurin-bin-21
 
     # language servers
     ccls # c / c++
