@@ -65,10 +65,19 @@
     wslConf.network.generateHosts = false;
     defaultUser = username;
     startMenuLaunchers = true;
+    # VSCode fix?
+    extraBin = with pkgs; [
+      { src = "${coreutils}/bin/uname"; }
+      { src = "${coreutils}/bin/dirname"; }
+      { src = "${coreutils}/bin/readlink"; }
+    ];
 
     # Enable integration with Docker Desktop (needs to be installed)
     docker-desktop.enable = false;
   };
+
+  programs.nix-ld.enable = true; # VSCode fix?
+
 
   virtualisation.docker = {
     enable = true;
