@@ -59,6 +59,10 @@
 
     # treesitter
     tree-sitter
+    
+    # java stuff
+    maven
+    temurin-bin
 
     # language servers
     ccls # c / c++
