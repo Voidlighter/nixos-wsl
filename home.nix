@@ -62,6 +62,7 @@
 
     # language servers
     ccls # c / c++
+    clang
     gopls
     nodePackages.typescript-language-server
     pkgs.nodePackages.vscode-langservers-extracted # html, css, json, eslint
@@ -161,12 +162,18 @@ in {
       userName = "voidlighter"; 
       extraConfig = {
         url = {
-          "https://oauth2:${secrets.github_token}@github.com" = {
-            insteadOf = "https://github.com";
-          };
-          "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
-            insteadOf = "https://gitlab.com";
-          };
+      #    "https://oauth2:${secrets.github_token}@github.com" = {
+      #      insteadOf = "https://github.com";
+      #    };
+      #    "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
+      #      insteadOf = "https://gitlab.com";
+      #    };
+          "https://github.com/" = {
+	    insteadOf = [
+	      "gh:"
+	      "github:"
+	    ];
+	  };
         };
         push = {
           default = "current";
@@ -178,6 +185,9 @@ in {
         diff = {
           colorMoved = "default";
         };
+	init = {
+	  defaultBranch = "main";  
+	};
       };
     };
 
