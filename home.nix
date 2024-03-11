@@ -1,6 +1,5 @@
 {
-  # FIXME: uncomment the next line if you want to reference your GitHub/GitLab access tokens and other secrets
-  secrets,
+  inputs,
   config,
   pkgs,
   username,
@@ -36,7 +35,6 @@
   ];
 
   stable-packages = with pkgs; [
-
     # key tools
     gh # for bootstrapping
     just
@@ -59,7 +57,7 @@
 
     # treesitter
     tree-sitter
-    
+
     # java stuff
     maven
     temurin-bin-21
@@ -118,12 +116,52 @@ in {
   # home.file.".config/lvim/config.lua".source = ./lvim_config.lua;
 
   programs = {
+    # neovim = {
+    #   enable = true;
+    #   viAlias = true;
+    #   vimAlias = true;
+    #   vimdiffAlias = true;
+
+    #   plugins = with pkgs.vimPlugins[
+    #     {
+    #       plugin = comment-nvim;
+    #       type = "lua"
+    #       config = ''require(Comment).setup()''
+    #     }
+
+    #     {
+
+    #     }
+
+    #     {
+    #       plugin = gruvbox-nvim;
+    #       config = "colorscheme gruvbox"
+    #     }
+
+    #     telescope-nvim
+    #     (nvim-treesitter.withPlugins (p: [
+    #       p.tree-sitter-nix
+    #       p.tree-sitter-vim
+    #       p.tree-sitter-bash
+    #       p.tree-sitter-lua
+    #       p.tree-sitter-python
+    #       p.tree-sitter-json
+    #     ]))
+
+    #   ]
+
+    #   extraLuaConfig = ''
+    #   --Lua code and interpolate files go here
+    #   ${builtins.readFile ./nvim/options.lua}
+
+    #   '';
+    # };
+
     home-manager.enable = true;
     nix-index.enable = true;
     nix-index.enableZshIntegration = true;
     nix-index-database.comma.enable = true;
 
-    # FIXME: disable this if you don't want to use the starship prompt
     starship.enable = true;
     starship.settings = {
       aws.disabled = true;
@@ -163,21 +201,21 @@ in {
         navigate = true;
       };
       userEmail = "voidlighter@gmail.com";
-      userName = "voidlighter"; 
+      userName = "voidlighter";
       extraConfig = {
         url = {
-      #    "https://oauth2:${secrets.github_token}@github.com" = {
-      #      insteadOf = "https://github.com";
-      #    };
-      #    "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
-      #      insteadOf = "https://gitlab.com";
-      #    };
+          #    "https://oauth2:${secrets.github_token}@github.com" = {
+          #      insteadOf = "https://github.com";
+          #    };
+          #    "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
+          #      insteadOf = "https://gitlab.com";
+          #    };
           "https://github.com/" = {
-	    insteadOf = [
-	      "gh:"
-	      "github:"
-	    ];
-	  };
+            insteadOf = [
+              "gh:"
+              "github:"
+            ];
+          };
         };
         push = {
           default = "current";
@@ -189,22 +227,22 @@ in {
         diff = {
           colorMoved = "default";
         };
-	init = {
-	  defaultBranch = "main";  
-	};
+        init = {
+          defaultBranch = "main";
+        };
       };
     };
 
-# FIXME: Didn't work
-#    ssh = {
-#      startAgent = true;
-#      extraConfig = ''
-#      Host github
-#	HostName github.com
-#	User git
-#	AddKeysToAgent yes
-#      '';
-#    };
+    # FIXME: Didn't work
+    #    ssh = {
+    #      startAgent = true;
+    #      extraConfig = ''
+    #      Host github
+    #	HostName github.com
+    #	User git
+    #	AddKeysToAgent yes
+    #      '';
+    #    };
 
     # This is where .zshrc stuff goes
     zsh = {

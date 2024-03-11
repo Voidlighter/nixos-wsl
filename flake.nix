@@ -1,21 +1,21 @@
 {
   description = "NixOS WSL for Cade";
 
-	inputs = {
-	  nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-	  nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-	
-	  home-manager.url = "github:nix-community/home-manager/release-23.11";
-	  home-manager.inputs.nixpkgs.follows = "nixpkgs";
-	
-	  nur.url = "github:nix-community/NUR";
-	
-	  nixos-wsl.url = "github:nix-community/NixOS-WSL";
-	  nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-	
-	  nix-index-database.url = "github:Mic92/nix-index-database";
-	  nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-	};
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nur.url = "github:nix-community/NUR";
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs = inputs:
     with inputs; let
@@ -42,12 +42,12 @@
 
       configurationDefaults = args: {
         nixpkgs = nixpkgsWithOverlays;
-      		home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "hm-backup";
-            extraSpecialArgs = args;
-      		};
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "hm-backup";
+          extraSpecialArgs = args;
+        };
       };
 
       argDefaults = {
@@ -79,9 +79,9 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
       nixosConfigurations.default = mkNixosConfiguration {
-        hostname = "NixOS";
+        hostname = "nixos";
         username = "Cade";
-				modules = [
+        modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
         ];
@@ -90,7 +90,7 @@
       nixosConfigurations.Veridia = mkNixosConfiguration {
         hostname = "Veridia";
         username = "Cade";
-				modules = [
+        modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
         ];
@@ -99,7 +99,7 @@
       nixosConfigurations.Elysia = mkNixosConfiguration {
         hostname = "Elysia";
         username = "Cade";
-				modules = [
+        modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
         ];
