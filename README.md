@@ -177,6 +177,7 @@ this project uses a flat layout without any nesting or modularization.
 > * rebuild `sudo nixos-rebuild switch`
 > * shutodwn wsl from powershell `wsl --shutdown` and confirm shutdown `wsl --list --running`
 > * from nixos shell `mkdir ~/.vscode-server` & `curl https://raw.githubusercontent.com/sonowz/vscode-remote-wsl-nixos/master/server-env-setup -o ~/.vscode-server/server-env-setup`
+* or for vscodium run `mkdir ~/.vscodium-server` & `curl https://raw.githubusercontent.com/Voidlighter/vscodium-remote-wsl-nixos/master/server-env-setup -o ~/.vscodium-server/server-env-setup`
 > * from vscode attempt to connect via wsl.   Find NodeExecServer log message with how its being invoked
 > 
 > ```
