@@ -78,10 +78,26 @@
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      networking.hostName = "Veridia";
+      nixosConfigurations.default = mkNixosConfiguration {
+        hostname = "NixOS";
+        username = "Cade";
+				modules = [
+          nixos-wsl.nixosModules.wsl
+          ./wsl.nix
+        ];
+      };
 
       nixosConfigurations.Veridia = mkNixosConfiguration {
         hostname = "Veridia";
+        username = "Cade";
+				modules = [
+          nixos-wsl.nixosModules.wsl
+          ./wsl.nix
+        ];
+      };
+
+      nixosConfigurations.Elysia = mkNixosConfiguration {
+        hostname = "Elysia";
         username = "Cade";
 				modules = [
           nixos-wsl.nixosModules.wsl
