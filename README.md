@@ -200,4 +200,22 @@ this project uses a flat layout without any nesting or modularization.
 > 
 > cc @Atry @sonowz
 
+To finish getting VSCodium to work, I had to reference [this post](https://github.com/VSCodium/vscodium/issues/1265#issue-1378904326) and [this comment](https://github.com/VSCodium/vscodium/issues/1265#issuecomment-1310637145):
+> After a while I managed to make the extension work with these changes:
+> 
+> 1.Download the .vsix from https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl and install manually from the extensions section
+> 
+> 2.In the file: C:\Users\%USERNAME%\.vscode-oss\extensions\ms-vscode-remote.remote-wsl-0.66.3\scripts\wslDownload.sh replace all "commit:$COMMIT" with "latest"
+> 
+> 3.Open the extension And wait the download of the .vscodium-server within WSL user profile
+> 
+> 4.In the file C:\Users\%USERNAME%\.vscode-oss\extensions\ms-vscode-remote.remote-wsl-0.66.3\scripts\wslServer.sh replace 'SERVER_APPNAME=$3' with 'SERVER_APPNAME="code-server"'
+> 
+> 5.In the file \\wsl$\Ubuntu\%USERNAME%\.vscodium-server\bin\%COMIT_ID%\product.json replace the value of the "commit": with the same value of "commit": found in your %VSCODIUM_INSTALLATION_DIRECTORY%\VSCodium\resources\app\product.json
+> 
+> 6.In the file \\wsl$\Ubuntu\%USERNAME%\.vscodium-server\bin\%COMIT_ID%\out\vs\server\node\server.main.js search "if(!ye){if(this._environmentService.isBuilt)return ie("Unauthorized client refused")" and change the first if condition from '!ye' to 'false'
+
+> Just as an update, on step 6, search for "Unauthorized client refused". There should be 2 instances, apply the fix to the second search result. The variable name changes in different versions, apparently (for me it was `ve`).
+
+
 
