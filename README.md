@@ -217,5 +217,4 @@ To finish getting VSCodium to work, I had to reference [this post](https://githu
 
 > Just as an update, on step 6, search for "Unauthorized client refused". There should be 2 instances, apply the fix to the second search result. The variable name changes in different versions, apparently (for me it was `ve`).
 
-
-
+Except when trying to fix it I was about to do step 5 when suddenly it worked. Though, I had gone through all the steps before to get it to work the first time. It broke when I updated VSCodium. Shouldn't have done that apparently.
